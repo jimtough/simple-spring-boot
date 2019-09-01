@@ -1,4 +1,4 @@
-package com.jimtough.ssb;
+package com.adultmalehuman.ssb;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,11 +1,11 @@
-package com.jimtough.ssb;
+package com.adultmalehuman.ssb;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.time.Duration;
 
-import com.jimtough.ssb.mvc.MyRestController;
+import com.adultmalehuman.ssb.mvc.MyRestController;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.jimtough.ssb;
+package com.adultmalehuman.ssb;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

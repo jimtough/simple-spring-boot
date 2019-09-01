@@ -1,4 +1,4 @@
-package com.jimtough.ssb.mvc;
+package com.adultmalehuman.ssb.mvc;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;

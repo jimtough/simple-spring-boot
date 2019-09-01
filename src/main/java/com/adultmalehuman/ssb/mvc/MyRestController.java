@@ -1,11 +1,10 @@
-package com.jimtough.ssb.mvc;
-
-import static com.jimtough.ssb.GlobalConstants.METRIC_PAGEHITS_TOTAL_COUNT;
+package com.adultmalehuman.ssb.mvc;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.adultmalehuman.ssb.GlobalConstants;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +35,7 @@ public class MyRestController {
 
 	MyRestController(MeterRegistry meterRegistry) {
 		Objects.requireNonNull(meterRegistry, "meterRegistry cannot be null");
-		this.requestCountTotal = meterRegistry.gauge(METRIC_PAGEHITS_TOTAL_COUNT, new AtomicInteger(0));
+		this.requestCountTotal = meterRegistry.gauge(GlobalConstants.METRIC_PAGEHITS_TOTAL_COUNT, new AtomicInteger(0));
 	}
 
 	static final String CANNED_REPLY_STRING = "Greetings from my Spring Boot app!";

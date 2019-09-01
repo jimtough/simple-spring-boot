@@ -1,4 +1,4 @@
-package com.jimtough.ssb;
+package com.adultmalehuman.ssb;
 
 public final class GlobalConstants {
 
