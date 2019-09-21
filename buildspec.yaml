@@ -1,0 +1,88 @@
+version: 0.2
+#------------------------------------------------------------------------------
+#
+# DOCUMENTATION REFERENCES:
+#  - https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#runtime-versions-buildspec-file
+#
+# NOTE: I copied the entire "version 0.2" buildspec.yaml template and only uncommented the parts I need, keeping the rest as a reference
+#
+#------------------------------------------------------------------------------
+#
+#env:
+#  variables:
+#    key: "value"
+#    key: "value"
+#  parameter-store:
+#    key: "value"
+#    key: "value"
+#  git-credential-helper: yes
+#
+#proxy:
+#  upload-artifacts: yes
+#  logs: yes
+#
+phases:
+  install:
+#    run-as: Linux-user-name
+    runtime-versions:
+      java: openjdk8
+      #python: 3.7
+      #nodejs: 8
+#    commands:
+#      - command
+#      - command
+#    finally:
+#      - command
+#      - command
+#  pre_build:
+#    run-as: Linux-user-name
+#    commands:
+#      - command
+#      - command
+#    finally:
+#      - command
+#      - command
+  build:
+#    run-as: Linux-user-name
+    commands:
+      - mvn clean package
+#      - command
+#      - command
+#    finally:
+#      - command
+#      - command
+#  post_build:
+#    run-as: Linux-user-name
+#    commands:
+#      - command
+#      - command
+#    finally:
+#      - command
+#      - command
+artifacts:
+  files:
+    - target/simple-spring-boot-app.jar
+#    - location
+#    - location
+#  name: artifact-name
+  discard-paths: yes
+#  base-directory: location
+#  secondary-artifacts:
+#    artifactIdentifier:
+#      files:
+#        - location
+#        - location
+#      name: secondary-artifact-name
+#      discard-paths: yes
+#      base-directory: location
+#    artifactIdentifier:
+#      files:
+#        - location
+#        - location
+#      discard-paths: yes
+#      base-directory: location
+cache:
+  paths:
+    - '/root/.m2/**/*'
+#    - path
+#    - path
