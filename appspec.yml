@@ -1,0 +1,57 @@
+#----------------------------------------------------------------------------------------------------------------------
+# HELPFUL REFERENCES:
+#  - https://docs.aws.amazon.com/en_pv/codedeploy/latest/userguide/troubleshooting-deployments.html#troubleshooting-skipped-lifecycle-events
+#  - https://docs.aws.amazon.com/en_pv/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-server
+#
+#  Location of CodeDeploy agent log on EC2 Linux: /var/log/aws/codedeploy-agent/codedeploy-agent.log
+#  Location of deployment logs (including lifecycle scripts output): /opt/codedeploy-agent/deployment-root/deployment-logs
+#----------------------------------------------------------------------------------------------------------------------
+version: 0.0
+os: linux
+files:
+  - source: target/simple-spring-boot-app.jar
+    destination: /var/app
+#  - source: Config/config.txt
+#    destination: /webapps/Config
+#  - source: source
+#    destination: /webapps/myApp
+
+#  For all of the files in the /var/app folder ending in .jar
+#  (for example, simple-spring-boot-app.jar), owner = root, group = root,
+#  and mode = 754 (-rwxr-xr--).
+permissions:
+  - object: /var/app
+    pattern: "*.jar"
+    owner: root
+    group: root
+    mode: 754
+    type:
+      - file
+
+hooks:
+  ApplicationStart:
+    - location: codedeploy/start-app.sh
+      timeout: 60
+      runas: root
+  ApplicationStop:
+    - location: codedeploy/stop-app.sh
+      timeout: 60
+      runas: root
+#hooks:
+#  BeforeInstall:
+#    - location: scripts/install_dependencies.sh
+#      timeout: 300
+#      runas: root
+#  AfterInstall:
+#    - location: scripts/change_permissions.sh
+#      timeout: 300
+#      runas: root
+#  ApplicationStart:
+#    - location: scripts/start_server.sh
+#    - location: scripts/create_test_db.sh
+#      timeout: 300
+#      runas: root
+#  ApplicationStop:
+#    - location: scripts/stop_server.sh
+#      timeout: 300
+#      runas: root
