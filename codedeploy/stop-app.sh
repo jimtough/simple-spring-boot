@@ -8,5 +8,5 @@ echo "DEPLOYMENT_ID:" $DEPLOYMENT_ID
 echo "DEPLOYMENT_GROUP_NAME:" $DEPLOYMENT_GROUP_NAME
 echo "DEPLOYMENT_GROUP_ID:" $DEPLOYMENT_GROUP_ID
 echo "LIFECYCLE_EVENT:" $LIFECYCLE_EVENT
+systemctl disable simple-spring-boot.service
 systemctl stop simple-spring-boot.service
-systemctl status simple-spring-boot.service

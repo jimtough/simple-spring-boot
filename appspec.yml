@@ -13,8 +13,6 @@ files:
     destination: /var/app
 #  - source: Config/config.txt
 #    destination: /webapps/Config
-#  - source: source
-#    destination: /webapps/myApp
 
 #  For all of the files in the /var/app folder ending in .jar
 #  (for example, simple-spring-boot-app.jar), owner = root, group = root,
@@ -29,15 +27,6 @@ permissions:
       - file
 
 hooks:
-  ApplicationStart:
-    - location: codedeploy/start-app.sh
-      timeout: 60
-      runas: root
-  ApplicationStop:
-    - location: codedeploy/stop-app.sh
-      timeout: 60
-      runas: root
-#hooks:
 #  BeforeInstall:
 #    - location: scripts/install_dependencies.sh
 #      timeout: 300
@@ -46,12 +35,13 @@ hooks:
 #    - location: scripts/change_permissions.sh
 #      timeout: 300
 #      runas: root
-#  ApplicationStart:
+  ApplicationStop:
+    - location: codedeploy/stop-app.sh
+      timeout: 60
+      runas: root
+  ApplicationStart:
+    - location: codedeploy/start-app.sh
 #    - location: scripts/start_server.sh
 #    - location: scripts/create_test_db.sh
-#      timeout: 300
-#      runas: root
-#  ApplicationStop:
-#    - location: scripts/stop_server.sh
-#      timeout: 300
-#      runas: root
+      timeout: 60
+      runas: root
