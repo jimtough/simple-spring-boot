@@ -27,10 +27,10 @@ permissions:
       - file
 
 hooks:
-#  BeforeInstall:
-#    - location: scripts/install_dependencies.sh
-#      timeout: 300
-#      runas: root
+  BeforeInstall:
+    - location: scripts/delete-last-deployment.sh
+      timeout: 15
+      runas: root
 #  AfterInstall:
 #    - location: scripts/change_permissions.sh
 #      timeout: 300
