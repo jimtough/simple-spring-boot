@@ -28,13 +28,13 @@ permissions:
 
 hooks:
   BeforeInstall:
-    - location: scripts/delete-last-deployment.sh
+    - location: codedeploy/delete-last-deployment.sh
       timeout: 15
       runas: root
-#  AfterInstall:
-#    - location: scripts/change_permissions.sh
-#      timeout: 300
-#      runas: root
+  AfterInstall:
+    - location: codedeploy/after-install.sh
+      timeout: 10
+      runas: root
   ApplicationStop:
     - location: codedeploy/stop-app.sh
       timeout: 60
